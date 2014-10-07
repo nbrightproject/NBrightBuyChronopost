@@ -1,0 +1,99 @@
+[<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuyChronopost/App_LocalResources/" />]
+
+<br/>
+
+<div id="pageactionssource"><!-- Page actions are moved into header bar - also exist at page bottom-->
+	<div class="col-xs-9 col-sm-9">
+		<a href="#" class="show-sidebar">
+		  <i class="fa fa-bars"></i>
+		</a>
+		<div class="actionbuttonwrapper">
+	    [<tag id="cmdSave" type="linkbutton" resourcekey="General.cmdSave" cssclass="savebutton btn btn-warning" commandname="save"/>]
+	    </div>
+	</div>
+	<div class="col-xs-3 col-sm-3 top-panel-right">
+		[<tag type="selectlocalebutton" size="32"/>]
+	</div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>Chronopost Details</span>
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="form-horizontal dnnForm">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.accountnumber" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="chronopostaccountnumber" cssclass="form-control" type="textbox" maxlength="20" Text="" />]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.password" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="chronopostpassword" cssclass="form-control" type="textbox" maxlength="20" Text="" />]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.distributionpostcode" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="distributionpostcode" cssclass="form-control" type="textbox" maxlength="20" Text="" />]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.distributioncountrycode" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="distributioncountrycode" cssclass="form-control" type="textbox" maxlength="20" Text="" />]
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.distributioncountryname" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="distributioncountryname"  cssclass="form-control" type="textbox" maxlength="50" Text="" />]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.leaddays" />]</label>
+                        <div class="col-sm-1">
+                            [<tag id="chronopostleaddays" cssclass="form-control" type="textbox" maxlength="3" Text="5" />]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.type" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="chronoposttype" cssclass="form-control" type="dropdownlist" data="M;D" />]
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.printmode" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="printmode" cssclass="form-control" type="dropdownlist" data="PDF;SPF;THE;SER" />]
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.products" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="chronopostproductcode" type="checkboxlist" resourcekey="Chronopost.productcodelist" />]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Chronopost.freeshippinglimit" />]</label>
+                        <div class="col-sm-1">
+                            [<tag id="freeshippinglimit" cssclass="form-control" type="textbox" maxlength="10" Text="0" />]
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+

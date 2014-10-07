@@ -1,0 +1,61 @@
+[<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuyChronopost/App_LocalResources/" />]
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=fr"></script>
+
+<script language="javascript" type="text/javascript">
+    var locations = new Array();
+
+    function initializeGoogleMap() {
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        //create empty LatLngBounds object
+        var bounds = new google.maps.LatLngBounds();
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[[i]][[1]], locations[[i]][[2]]),
+                map: map
+            });
+
+            //extend the bounds to include each marker's position
+            bounds.extend(marker.position);
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[[i]][[0]]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+
+        //now fit the map to the newly inclusive bounds
+        map.fitBounds(bounds);
+
+        //(optional) restore the zoom level after the map is done scaling
+        var listener = google.maps.event.addListener(map, "idle", function () {
+            google.maps.event.removeListener(listener);
+        });
+
+    }
+
+    $(document).ready(function () {
+        initializeGoogleMap();
+    });
+
+</script>
+
+<div id="chronopostrelaistemplate">
+    
+        <!-- create hidden fields to store pickup point data -->
+    [<tag id="pickuppointcode" type="hidden" value="" />]
+    [<tag id="pickuppointaddress" type="hidden" value="" />]
+    [<tag id="pickuppointmapurl" type="hidden" value="" />]
+    
+    
+

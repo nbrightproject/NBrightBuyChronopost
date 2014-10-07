@@ -1,0 +1,28 @@
+[<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuyChronopost/App_LocalResources/" />]
+
+<div id="chronoposttemplate" style="display:none;">
+    <br />
+
+[<tag id="chronopostproductcode" class="chronopostproductcode" type="radiobuttonlist" data="{chronopostproductcodedata}" datavalue="{chronopostproductcodedatavalue}" />]
+
+[<tag type="valueof" xpath="genxml/chronopostmessage" />]
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        // JQuery used to move cart elements into required area 
+        $('#shippingoptions').append($('#chronoposttemplate'));
+        $('#shippingoptions').append($('#chronopostrelaistemplate'));
+
+        // hide or show chronopost options basedon shipping method selectd.
+        if ($("input[[id*='_shippingprovider_']]:checked").val() == '[Settings:chronopostkey]') $('#chronoposttemplate').show();
+
+        //on sleection of chronopost product force postback
+        $('input[[id*="_chronopostproductcode_"]]').click(function () {
+            var postcmd = $('a[[id*="_cmdConfirm"]]').attr('href').replace("javascript:__doPostBack('", "").replace("','')", "");
+            __doPostBack(postcmd, '');
+        });
+
+    });
+</script>
