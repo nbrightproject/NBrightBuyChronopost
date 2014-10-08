@@ -3,3 +3,16 @@
 
 </div>
 
+<script>
+    $(document).ready(function () {
+
+        //on sleection of chronopost product force postback
+        $('.collectionpointselect').click(function () {
+            $(".relaisselect").removeAttr('style');
+            $('input[[id*="_pickuppointref_"]]').val($(this).attr("pointref"));
+            $('input[[id*="_pickuppointaddr_"]]').val($(this).attr("pointaddr"));
+            $(this).parent().attr("style", "border: 1px solid #000;");
+        });
+
+    });
+</script>
