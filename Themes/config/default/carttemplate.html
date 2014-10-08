@@ -20,8 +20,8 @@
 
         //on sleection of chronopost product force postback
         $('input[[id*="_chronopostproductcode_"]]').click(function () {
-            var postcmd = $('a[[id*="_cmdConfirm"]]').attr('href').replace("javascript:__doPostBack('", "").replace("','')", "");
-            __doPostBack(postcmd, '');
+            $('input[[id*="_shippingproductcode_"]]').val($(this).val());
+            $("input[[id*='_cmdConfirm']]").trigger("click");
         });
 
     });

@@ -30,6 +30,7 @@
                 return function () {
                     infowindow.setContent(locations[[i]][[0]]);
                     infowindow.open(map, marker);
+                    $(".collectionpointselect[[pointref='" + locations[[i]][[3]] + "']]").trigger("click");
                 }
             })(marker, i));
         }
@@ -51,11 +52,4 @@
 </script>
 
 <div id="chronopostrelaistemplate">
-    
-        <!-- create hidden fields to store pickup point data -->
-    [<tag id="pickuppointcode" type="hidden" value="" />]
-    [<tag id="pickuppointaddress" type="hidden" value="" />]
-    [<tag id="pickuppointmapurl" type="hidden" value="" />]
-    
-    
 
