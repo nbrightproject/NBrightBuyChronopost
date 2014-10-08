@@ -12,13 +12,15 @@
 <script>
     $(document).ready(function () {
         // JQuery used to move cart elements into required area 
-        $('#shippingoptions').append($('#chronoposttemplate'));
-        $('#shippingoptions').append($('#chronopostrelaistemplate'));
+        $('#providertemplates').append($('#chronoposttemplate'));
+        $('#providertemplates').append($('#chronopostrelaistemplate'));
 
         // hide or show chronopost options basedon shipping method selectd.
         if ($("input[[id*='_shippingprovider_']]:checked").val() == '[Settings:chronopostkey]') $('#chronoposttemplate').show();
 
-        //on sleection of chronopost product force postback
+
+        //on selection of chronopost product force postback
+        $('input[[id*="_shippingproductcode_"]]').val($('input[[id*="_chronopostproductcode_"]]').val());
         $('input[[id*="_chronopostproductcode_"]]').click(function () {
             $('input[[id*="_shippingproductcode_"]]').val($(this).val());
             $("input[[id*='_cmdConfirm']]").trigger("click");
