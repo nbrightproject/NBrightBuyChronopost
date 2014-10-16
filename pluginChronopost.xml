@@ -1,0 +1,55 @@
+		<genxml>
+			<files />
+			<hidden>
+
+				<index>15</index>
+			</hidden>
+			<textbox>
+				<ctrl>
+					<![CDATA[chronopost]]>
+				</ctrl>
+				<name>
+					<![CDATA[Chronopost]]>
+				</name>
+				<icon>
+					<![CDATA[]]>
+				</icon>
+				<group>
+					<![CDATA[Shipping]]>
+				</group>
+				<path>
+					<![CDATA[/DesktopModules/NBright/NBrightBuyChronopost/Chronopost.ascx]]>
+				</path>
+				<help>
+					<![CDATA[]]>
+				</help>
+				<roles>
+					<![CDATA[Administrators]]>
+				</roles>
+				<description>
+					<![CDATA[]]>
+				</description>
+				<assembly>
+
+					<![CDATA[NBrightBuyChronopost]]>
+				</assembly>
+				<namespaceclass>
+					<![CDATA[Nevoweb.DNN.NBrightBuyChronopost.Provider]]>
+				</namespaceclass>
+			</textbox>
+			<checkbox>
+				<hidden>
+					<![CDATA[False]]>
+				</hidden>
+				<active>
+					<![CDATA[True]]>
+				</active>
+			</checkbox>
+			<dropdownlist>
+				<providertype selectedtext="Shipping">
+					<![CDATA[02]]>
+				</providertype>
+			</dropdownlist>
+			<checkboxlist />
+			<radiobuttonlist />
+		</genxml>

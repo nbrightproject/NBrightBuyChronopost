@@ -33,6 +33,16 @@
 						</assembly>
 					</assemblies>
 				</component>
+				<component type="File">
+					<files>
+						<basePath>DesktopModules\NBright\NBrightBuy\Plugins</basePath>
+						<file>
+							<path></path>
+							<name>pluginChronopost.xml</name>
+							<sourceFileName>pluginChronopost.xml</sourceFileName>
+						</file>
+					</files>
+				</component>
 			</components>
 		</package>
 	</packages>
