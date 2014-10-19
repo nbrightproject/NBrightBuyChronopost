@@ -1,20 +1,21 @@
+</ul>
 
-<div id="map-canvas" style="position:relative;width:640px;height:400px;margin-bottom:20px;"></div>
+<div id="map-canvas" style="position:relative;width:49%;height:400px;margin-right:0;float:left;min-width:240px;border-radius:7px;border:1px solid #bbbbbb;"></div>
 
 </div>
 
 <script>
     $(document).ready(function () {
 
-        // hide hte submit buton until a pickup point is seledcted
+        // hide the submit buton until a pickup point is selected
         $("input[[id*='_cmdOrder_']]").hide();
 
-        //on sleection of chronopost product force postback
+        //on selection of chronopost product force postback
         $('.collectionpointselect').click(function () {
-            $(".relaisselect").removeAttr('style');
+            $(".relaisselect").removeClass("relaisselected");
             $('input[[id*="_pickuppointref_"]]').val($(this).attr("pointref"));
             $('input[[id*="_pickuppointaddr_"]]').val($(this).attr("pointaddr"));
-            $(this).parent().attr("style", "border: 1px solid #000;");
+            $(this).parent().addClass("relaisselected");
             $("input[[id*='_cmdOrder_']]").show();
         });
 
