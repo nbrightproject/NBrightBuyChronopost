@@ -48,6 +48,7 @@
     <Compile Include="Provider.cs" />
     <Compile Include="Chronopost.ascx.cs">
       <DependentUpon>Chronopost.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Chronopost.ascx.designer.cs">
       <DependentUpon>Chronopost.ascx.cs</DependentUpon>
