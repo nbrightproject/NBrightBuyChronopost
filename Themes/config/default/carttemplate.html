@@ -1,12 +1,12 @@
 [<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuyChronopost/App_LocalResources/" />]
 
 <div id="chronoposttemplate" style="display:none;">
-    <br />
-
-[<tag id="chronopostproductcode" class="chronopostproductcode" type="radiobuttonlist" data="{chronopostproductcodedata}" datavalue="{chronopostproductcodedatavalue}" />]
-
-[<tag type="valueof" xpath="genxml/chronopostmessage" />]
-
+    <div class="formrow dnnForm">
+		[<tag id="chronopostproductcode" cssclass="radiobuttonlist" RepeatDirection="Horizontal" RepeatColumns="0" RepeatLayout="Flow" type="radiobuttonlist" data="{chronopostproductcodedata}" datavalue="{chronopostproductcodedatavalue}" />]
+	</div>
+    <div class="formrow">
+		[<tag type="valueof" xpath="genxml/chronopostmessage" />]
+    </div>
 </div>
 
 <script>
