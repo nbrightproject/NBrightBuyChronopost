@@ -12,6 +12,7 @@ using NBrightCore.common;
 using NBrightDNN;
 using Nevoweb.DNN.NBrightBuy.Components;
 using Nevoweb.DNN.NBrightBuy.Components.Interfaces;
+using System.Globalization;
 
 namespace Nevoweb.DNN.NBrightBuyChronopost
 {
@@ -50,7 +51,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             soapxml = soapxml.Replace("{password}", defData.password);
             soapxml = soapxml.Replace("{depcode}", defData.departurecode);
             soapxml = soapxml.Replace("{arrcode}", defData.arrivalcode);
-            soapxml = soapxml.Replace("{weight}", defData.totalweight.ToString("F"));
+            soapxml = soapxml.Replace("{weight}", defData.totalweight.ToString(CultureInfo.GetCultureInfo("en-US")));
             soapxml = soapxml.Replace("{productcode}", defData.productcode);
             soapxml = soapxml.Replace("{type}", defData.chronoposttype);
 
@@ -67,9 +68,9 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             var shippingmsg = "";
 
             var shippingnod = doc.SelectSingleNode("/soap:Envelope/soap:Body/ns1:quickCostResponse/return/amountTTC", nsMgr);
-            if (shippingnod != null && Utils.IsNumeric(shippingnod.InnerText)) shippingcost = Convert.ToDouble(shippingnod.InnerText);
+            if (shippingnod != null && Utils.IsNumeric(shippingnod.InnerText)) shippingcost = Convert.ToDouble(shippingnod.InnerText, CultureInfo.GetCultureInfo("en-US"));
             shippingnod = doc.SelectSingleNode("/soap:Envelope/soap:Body/ns1:quickCostResponse/return/amountTVA", nsMgr);
-            if (shippingnod != null && Utils.IsNumeric(shippingnod.InnerText)) shippingcostTVA = Convert.ToDouble(shippingnod.InnerText);
+            if (shippingnod != null && Utils.IsNumeric(shippingnod.InnerText)) shippingcostTVA = Convert.ToDouble(shippingnod.InnerText, CultureInfo.GetCultureInfo("en-US"));
             shippingnod = doc.SelectSingleNode("/soap:Envelope/soap:Body/ns1:quickCostResponse/return/errorMessage", nsMgr);
             if (shippingnod != null) shippingmsg = shippingnod.InnerText;
 
