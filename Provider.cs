@@ -30,7 +30,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
 
             var defData = GetDefaultvalues(info, cartInfo);
 
-            if (defData.regioncode == "" || (defData.freeshippinglimit > 0 && (defData.freeshippinglimit <= defData.totalcost)))
+            if (defData.regioncode == "" || (defData.freeshippinglimit > 0 && (defData.freeshippinglimit <= defData.totalcost) || defData.totalweight == 0))
             {
                 // return zero if we have invalid data
                 cartInfo.SetXmlPropertyDouble("genxml/shippingcost", "0");
