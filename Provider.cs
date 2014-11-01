@@ -116,7 +116,11 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             soapxml = soapxml.Replace("{accountNumber}", defData.accountnumber);
             soapxml = soapxml.Replace("{password}", defData.password);
             soapxml = soapxml.Replace("{weight}", defData.totalweight.ToString("F"));
-            soapxml = soapxml.Replace("{productcode}", defData.productcode);
+
+            var productcode = 0;
+            if (Utils.IsNumeric(defData.productcode)) productcode = Convert.ToInt32(defData.productcode);
+            soapxml = soapxml.Replace("{productcode}", productcode.ToString("D2"));
+
 
             soapxml = soapxml.Replace("{shipperCountry}", defData.distributioncountrycode);
             soapxml = soapxml.Replace("{shipperCountryName}", defData.distributioncountryname);
@@ -126,14 +130,35 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
                 soapxml = soapxml.Replace("{" + s.Key + "}", s.Value);                
             }
 
-            foreach (var s in cartInfo.ToDictionary("genxml/shipaddress/"))
+            switch (defData.shipoption)
             {
-                soapxml = soapxml.Replace("{" + s.Key + "}", s.Value);                
+                case "1":
+                    soapxml = soapxml.Replace("{countrytext}", cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext"));
+                    if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/email"))) cartInfo.SetXmlProperty("genxml/billaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
+                    foreach (var s in cartInfo.ToDictionary("genxml/billaddress/"))
+                    {
+                        soapxml = soapxml.Replace("{" + s.Key + "}", s.Value);
+                    }
+                    break;
+                case "2":
+                    soapxml = soapxml.Replace("{countrytext}", cartInfo.GetXmlProperty("genxml/shipaddress/genxml/dropdownlist/country/@selectedtext"));
+                    if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/shipaddress/genxml/textbox/email"))) cartInfo.SetXmlProperty("genxml/shipaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
+                    foreach (var s in cartInfo.ToDictionary("genxml/shipaddress/"))
+                    {
+                        soapxml = soapxml.Replace("{" + s.Key + "}", s.Value);
+                    }
+                    break;
+                default:
+                    foreach (var s in cartInfo.ToDictionary("genxml/billaddress/"))
+                    {
+                        soapxml = soapxml.Replace("{" + s.Key + "}", "");
+                    }
+                    break;
             }
+
 
             soapxml = soapxml.Replace("{recipientPreAlert}", "0");
             soapxml = soapxml.Replace("{ordernumber}", cartInfo.GetXmlProperty("genxml/ordernumber"));
-            soapxml = soapxml.Replace("{productcode}", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/chronopostproductcode"));
             DateTime shippingdate = DateTime.Today;
             if (Utils.IsDate(cartInfo.GetXmlProperty("genxml/textbox/shippingdate"))) shippingdate = Convert.ToDateTime(cartInfo.GetXmlProperty("genxml/textbox/shippingdate"));
             soapxml = soapxml.Replace("{shipdate}", shippingdate.ToString("yyyy-MM-dd") + "Y12:00:00.000Z");
