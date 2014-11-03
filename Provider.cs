@@ -31,7 +31,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
 
             var defData = GetDefaultvalues(info, cartInfo);
 
-            if (defData.regioncode == "" || (defData.freeshippinglimit > 0 && (defData.freeshippinglimit <= defData.totalcost) || defData.totalweight == 0))
+            if (defData.regioncode == "" || (defData.freeshippinglimit > 0 && (defData.freeshippinglimit <= defData.totalcost) || defData.totalweight == 0) || (defData.productcode == "86" && info.GetXmlPropertyBool("genxml/checkbox/offerpickupfree")))
             {
                 // return zero if we have invalid data
                 cartInfo.SetXmlPropertyDouble("genxml/shippingcost", "0");
@@ -455,7 +455,41 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             return rtnData;
         }
 
-        
+
+
+        public override bool IsValid(NBrightInfo cartInfo)
+        {
+            // check if this provider is valid for the counrty in the checkout
+            var shipoption = cartInfo.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/rblshippingoptions");
+            var countrycode = "";
+            switch (shipoption)
+            {
+                case "1":
+                    countrycode = cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country");
+                    break;
+                case "2":
+                    countrycode = cartInfo.GetXmlProperty("genxml/shipaddress/genxml/dropdownlist/country");
+                    break;
+            }
+
+            var isValid = true;
+            var modCtrl = new NBrightBuyController();
+            var info = modCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, "SHIPPING", Shippingkey);
+            if (info != null)
+            {
+                var validlist = "," + info.GetXmlProperty("genxml/textbox/validcountrycodes") + ",";
+                var notvalidlist = "," + info.GetXmlProperty("genxml/textbox/notvalidcountrycodes") + ",";
+                if (validlist.Trim(',') != "")
+                {
+                    isValid = false;
+                    if (validlist.Contains("," + countrycode + ",")) isValid = true;
+                }
+                if (notvalidlist.Trim(',') != "" && notvalidlist.Contains("," + countrycode + ",")) isValid = false;                
+            }
+
+            return isValid;
+        }
+
     }
 
     /// <summary>

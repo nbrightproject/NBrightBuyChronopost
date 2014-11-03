@@ -180,4 +180,13 @@
   <data name="printmode.Text" xml:space="preserve">
     <value>Print Mode</value>
   </data>
+  <data name="notvalidcountrycodes.Text" xml:space="preserve">
+    <value>INVALID Country Codes  (CSV)</value>
+  </data>
+  <data name="validcountrycodes.Text" xml:space="preserve">
+    <value>VALID Country Codes (CSV)</value>
+  </data>
+  <data name="offerpickupfree.Text" xml:space="preserve">
+    <value>Offer Pickup (Chrono Relais) Free</value>
+  </data>
 </root>
