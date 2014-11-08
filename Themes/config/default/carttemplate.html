@@ -23,7 +23,7 @@
         $('input[[id*="_shippingproductcode_"]]').val($('input[[id*="_chronopostproductcode_"]]').val());
         $('input[[id*="_chronopostproductcode_"]]').click(function () {
             $('input[[id*="_shippingproductcode_"]]').val($(this).val());
-            $("input[[id*='_cmdConfirm']]").trigger("click");
+            $(".updatecart").trigger("click");
         });
 
     });
