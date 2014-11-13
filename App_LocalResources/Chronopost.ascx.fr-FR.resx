@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="chronopostsettings.Text" xml:space="preserve">
-    <value>Chronopost settings</value>
+    <value>Paramètres Chronopost</value>
   </data>
   <data name="accountnumber.Text" xml:space="preserve">
-    <value>Account Number</value>
+    <value>Numéro de compte</value>
   </data>
   <data name="password.Text" xml:space="preserve">
-    <value>Password</value>
+    <value>Mot de passe</value>
   </data>
   <data name="type.Text" xml:space="preserve">
     <value>Type</value>
@@ -166,36 +166,36 @@
     </value>
   </data>
   <data name="products.Text" xml:space="preserve">
-    <value>Activate Products</value>
+    <value>Services activés</value>
   </data>
   <data name="distributioncountrycode.Text" xml:space="preserve">
-    <value>Distribution Country Code</value>
+    <value>Code pays de distribution</value>
   </data>
   <data name="distributionpostcode.Text" xml:space="preserve">
-    <value>Distribution Postal Code</value>
+    <value>Code postal de distribution</value>
   </data>
   <data name="leaddays.Text" xml:space="preserve">
-    <value>Lead days to Estimated Delivery</value>
+    <value>Délai de préparation et livraison estimé</value>
   </data>
   <data name="relaisfail.Text" xml:space="preserve">
-    <value>No pickup points Available for your selected area, try another postal code</value>
+    <value>Aucun relais colis n'est disponible dans cette zone, veuillez essayer avec un autre code postal.</value>
   </data>
   <data name="distributioncountryname.Text" xml:space="preserve">
-    <value>Distribution Country  Name</value>
+    <value>Pays de distribution</value>
   </data>
   <data name="freeshippinglimit.Text" xml:space="preserve">
-    <value>Free shipping Limit</value>
+    <value>Franco de port</value>
   </data>
   <data name="printmode.Text" xml:space="preserve">
-    <value>Print Mode</value>
+    <value>Mode d'impression</value>
   </data>
   <data name="offerpickupfree.Text" xml:space="preserve">
-    <value>Free Pickup</value>
+    <value>Enlèvement gratuit</value>
   </data>
   <data name="notvalidcountrycodes.Text" xml:space="preserve">
-    <value>INVALID Country Codes  (CSV)</value>
+    <value>Codes pays non acceptés (CSV)</value>
   </data>
   <data name="validcountrycodes.Text" xml:space="preserve">
-    <value>VALID Country Codes (CSV)</value>
+    <value>Codes pays acceptés (CSV)</value>
   </data>
 </root>
