@@ -2,21 +2,16 @@
 
 <li class="relaisselect">
     <a class="collectionpointselect" pointref="[<tag type="valueof" xpath="return/identifiantChronopostPointA2PAS" />]" pointaddr='[<tag type="valueof" xpath="return/nomEnseigne" />],&nbsp;[<tag type="valueof" xpath="return/adresse1" />],&nbsp;[<tag type="valueof" xpath="return/localite" />],&nbsp;[<tag type="valueof" xpath="return/codepostal" />]&nbsp;(Ref:[<tag type="valueof" xpath="return/identifiantChronopostPointA2PAS" />])' href="javascript:void();" >
-    [<tag type="valueof" xpath="return/nomEnseigne" />],&nbsp;
-    [<tag type="valueof" xpath="return/adresse1" />],&nbsp;
-    [<tag type="valueof" xpath="return/localite" />],&nbsp;
-    [<tag type="valueof" xpath="return/codepostal" />]&nbsp;
-    (Ref:[<tag type="valueof" xpath="return/identifiantChronopostPointA2PAS" />])
+    <strong>[<tag type="valueof" xpath="return/nomEnseigne" />]</strong><br />
+    [<tag type="valueof" xpath="return/adresse1" />],
+    [<tag type="valueof" xpath="return/codepostal" />] [<tag type="valueof" xpath="return/localite" />]
     </a>
 </li>
 
 <script>
-    locations[[[[locations.length]]]] = [[[['<div class="gmapinfowindow"><h3>[<tag type="valueof" xpath="return/nomEnseigne" />]</h3>' +
-        '[<tag type="valueof" xpath="return/adresse1" />],&nbsp;' +
-        '[<tag type="valueof" xpath="return/localite" />],&nbsp;' +
-        '[<tag type="valueof" xpath="return/codepostal" />]&nbsp;' +
-        '(Ref:[<tag type="valueof" xpath="return/identifiantChronopostPointA2PAS" />])  ' +
+    locations[[[[locations.length]]]] = [[[['<div class="gmapinfowindow"><strong>[<tag type="valueof" xpath="return/nomEnseigne" />]</strong><br />' +
+        '[<tag type="valueof" xpath="return/adresse1" />]<br />' +
+        '[<tag type="valueof" xpath="return/codepostal" />] [<tag type="valueof" xpath="return/localite" />]' +
         '</div>', [<tag type="valueof" xpath="return/coordgeolatitude" />],[<tag type="valueof" xpath="return/coordgeolongitude" />], '[<tag type="valueof" xpath="return/identifiantChronopostPointA2PAS" />]' ]]]];
 
 </script>
-

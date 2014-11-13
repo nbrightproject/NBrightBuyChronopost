@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -130,31 +130,37 @@
     <value>Office Pickup</value>
   </data>
   <data name="chronopost1.Text" xml:space="preserve">
-    <value>Chrono 13</value>
+    <value>Chronopost 13</value>
   </data>
   <data name="chronopost16.Text" xml:space="preserve">
-    <value>Chrono 18</value>
+    <value>Chronopost 18</value>
   </data>
   <data name="chronopost17.Text" xml:space="preserve">
-    <value>Chrono Express International</value>
+    <value>Chronopost Express International</value>
   </data>
   <data name="chronopost2.Text" xml:space="preserve">
-    <value>Chrono 10</value>
+    <value>Chronopost</value>
   </data>
   <data name="chronopost37.Text" xml:space="preserve">
-    <value>Chrono Premium International</value>
+    <value>Chronopost Premium International</value>
   </data>
   <data name="chronopost44.Text" xml:space="preserve">
-    <value>Chrono Classic International</value>
+    <value>Chronopost Classic International</value>
   </data>
   <data name="chronopost86.Text" xml:space="preserve">
-    <value>Chrono Relais</value>
+    <value>Chronopost Relais</value>
   </data>
   <data name="productcodelist.data" xml:space="preserve">
-    <value>Chrono 13;Chrono 10;Chrono Relais;Chrono Express International;Chrono Classic International</value>
+    <value>Chronopost 13;Chronopost;Chronopost Relais;Chronopost Express International;Chronopost Classic International</value>
   </data>
   <data name="productcodelist.datavalue" xml:space="preserve">
     <value>1;2;86;17;44</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>
+    &lt;div class="chronopostitem"&gt;&lt;strong&gt;&lt;img src="/DesktopModules/NBright/NBrightBuyChronopost/Themes/config/img/chrono24.png" /&gt;Chronopost - Livraison express à domicile&lt;/strong&gt;&lt;br /&gt;Colis livré le lendemain matin avant 13h à votre domicile. La veille de la livraison, vous êtes averti par e-mail et SMS.&lt;/div&gt;
+    &lt;div class="chronopostitem"&gt;&lt;strong&gt;&lt;img src="/DesktopModules/NBright/NBrightBuyChronopost/Themes/config/img/chronorelais.png" /&gt;Chronopost - Livraison express en point relais&lt;/strong&gt;&lt;br /&gt;Colis livré le lendemain avant 13 h dans le relais Pickup de votre choix. Vous serez averti par e-mail et SMS.&lt;/div&gt;
+    </value>
   </data>
   <data name="products.Text" xml:space="preserve">
     <value>Activate Products</value>
@@ -179,14 +185,5 @@
   </data>
   <data name="printmode.Text" xml:space="preserve">
     <value>Print Mode</value>
-  </data>
-  <data name="notvalidcountrycodes.Text" xml:space="preserve">
-    <value>INVALID Country Codes  (CSV)</value>
-  </data>
-  <data name="validcountrycodes.Text" xml:space="preserve">
-    <value>VALID Country Codes (CSV)</value>
-  </data>
-  <data name="offerpickupfree.Text" xml:space="preserve">
-    <value>Offer Pickup (Chrono Relais) Free</value>
   </data>
 </root>

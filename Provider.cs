@@ -87,7 +87,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
 
         public override string Name()
         {
-            return "Standard";
+            return "Chronopost";
         }
 
         public override string GetTemplate(NBrightInfo cartInfo)
