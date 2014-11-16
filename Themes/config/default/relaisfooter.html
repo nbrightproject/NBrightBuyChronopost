@@ -7,8 +7,8 @@
 <script>
     $(document).ready(function () {
 
-        // hide the submit buton until a pickup point is selected
-        $("input[[id*='_cmdOrder_']]").hide();
+        // hide the submit button until a pickup point is selected
+        $(".cartlistnextclick").hide();
 
         //on selection of chronopost product force postback
         $('.collectionpointselect').click(function () {
@@ -16,7 +16,7 @@
             $('input[[id*="_pickuppointref_"]]').val($(this).attr("pointref"));
             $('input[[id*="_pickuppointaddr_"]]').val($(this).attr("pointaddr"));
             $(this).parent().addClass("relaisselected");
-            $("input[[id*='_cmdOrder_']]").show();
+            $(".cartlistnextclick").show();
         });
 
     });
