@@ -49,8 +49,8 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             // replace the tokens in the soap XML strucutre.
             soapxml = soapxml.Replace("{accountnumber}", defData.accountnumber);
             soapxml = soapxml.Replace("{password}", defData.password);
-            soapxml = soapxml.Replace("{depcode}", defData.departurecode);
-            soapxml = soapxml.Replace("{arrcode}", defData.arrivalcode);
+            soapxml = soapxml.Replace("{depcode}", Utils.StripAccents(defData.departurecode));
+            soapxml = soapxml.Replace("{arrcode}", Utils.StripAccents(defData.arrivalcode));
             soapxml = soapxml.Replace("{weight}", defData.totalweight.ToString(CultureInfo.GetCultureInfo("en-US")));
             soapxml = soapxml.Replace("{productcode}", defData.productcode);
             soapxml = soapxml.Replace("{type}", defData.chronoposttype);
@@ -122,8 +122,8 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             soapxml = soapxml.Replace("{productcode}", productcode.ToString("D2"));
 
 
-            soapxml = soapxml.Replace("{shipperCountry}", defData.distributioncountrycode);
-            soapxml = soapxml.Replace("{shipperCountryName}", defData.distributioncountryname);
+            soapxml = soapxml.Replace("{shipperCountry}", Utils.StripAccents(defData.distributioncountrycode));
+            soapxml = soapxml.Replace("{shipperCountryName}", Utils.StripAccents(defData.distributioncountryname));
 
             foreach (var s in StoreSettings.Current.Settings())
             {
@@ -133,11 +133,11 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             switch (defData.shipoption)
             {
                 case "1":
-                    soapxml = soapxml.Replace("{countrytext}", cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext"));
+                    soapxml = soapxml.Replace("{countrytext}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")));
                     if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/email"))) cartInfo.SetXmlProperty("genxml/billaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
                     foreach (var s in cartInfo.ToDictionary("genxml/billaddress/"))
                     {
-                        soapxml = soapxml.Replace("{" + s.Key + "}", s.Value);
+                        soapxml = soapxml.Replace("{" + s.Key + "}", Utils.StripAccents(s.Value));
                     }
                     break;
                 case "2":
@@ -145,7 +145,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
                     if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/shipaddress/genxml/textbox/email"))) cartInfo.SetXmlProperty("genxml/shipaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
                     foreach (var s in cartInfo.ToDictionary("genxml/shipaddress/"))
                     {
-                        soapxml = soapxml.Replace("{" + s.Key + "}", s.Value);
+                        soapxml = soapxml.Replace("{" + s.Key + "}", Utils.StripAccents(s.Value));
                     }
                     break;
                 default:
@@ -158,7 +158,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
 
 
             soapxml = soapxml.Replace("{recipientPreAlert}", "0");
-            soapxml = soapxml.Replace("{ordernumber}", cartInfo.GetXmlProperty("genxml/ordernumber"));
+            soapxml = soapxml.Replace("{ordernumber}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/ordernumber")));
             DateTime shippingdate = DateTime.Today;
             if (Utils.IsDate(cartInfo.GetXmlProperty("genxml/textbox/shippingdate"))) shippingdate = Convert.ToDateTime(cartInfo.GetXmlProperty("genxml/textbox/shippingdate"));
             soapxml = soapxml.Replace("{shipdate}", shippingdate.ToString("yyyy-MM-dd") + "Y12:00:00.000Z");
@@ -171,9 +171,9 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
                 soapxml = soapxml.Replace("{objecttype}", "MAR");
 
             if (defData.productcode == "86")
-                soapxml = soapxml.Replace("{recipientref}", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/chronopostrelais"));
+                soapxml = soapxml.Replace("{recipientref}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/chronopostrelais")));
             else
-                soapxml = soapxml.Replace("{recipientref}", cartInfo.GetXmlProperty("genxml/textbox/trackingcode"));
+                soapxml = soapxml.Replace("{recipientref}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/textbox/trackingcode")));
             
             // string any unmatch tokens
             var aryTokens = Utils.ParseTemplateText(soapxml,"{","}");
@@ -181,7 +181,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             soapxml = "";
             foreach (var s in aryTokens)
             {
-                if (lp % 2 != 0) soapxml += s;
+                if (lp % 2 != 0) soapxml += Utils.StripAccents(s);
                 lp += 1;
             }
 
@@ -279,7 +279,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             var soapxml = xmlDoc.OuterXml;
             // replace the tokens in the soap XML strucutre.
             soapxml = soapxml.Replace("{codeProduit}", defData.productcode);
-            soapxml = soapxml.Replace("{codePostal}", defData.postalcode);
+            soapxml = soapxml.Replace("{codePostal}", Utils.StripAccents(defData.postalcode));
             var daysadd = 5;
             if (Utils.IsNumeric(defData.leaddays)) daysadd = Convert.ToInt32(defData.leaddays);
             var pickupdate = DateTime.Now.AddDays(daysadd);
