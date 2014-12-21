@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="NBrightBuyChronopost" type="Module" version="1.0.0">
+		<package name="NBrightBuyChronopost" type="Module" version="1.0.1">
 			<friendlyName>NBrightBuyChronopost</friendlyName>
 			<description>NBrightBuyChronopost: Chronopost Shipping provider for NBrightStore</description>
 			<iconFile />
