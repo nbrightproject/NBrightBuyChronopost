@@ -64,8 +64,8 @@
                <recipientCountryName>{countrytext}</recipientCountryName>
                <recipientEmail>{email}</recipientEmail>
                <recipientMobilePhone></recipientMobilePhone>
-               <recipientName>{firstname}</recipientName>
-               <recipientName2>{lastname}</recipientName2>
+               <recipientName>{recfirstname}</recipientName>
+               <recipientName2>{reclastname}</recipientName2>
                <recipientPhone>{telephone}</recipientPhone>
 			   <recipientPreAlert>0</recipientPreAlert>
                <recipientZipCode>{postalcode}</recipientZipCode>

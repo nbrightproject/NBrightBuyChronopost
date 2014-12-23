@@ -134,13 +134,40 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             {
                 // Is a relais, so force delivery address to the pickup point.
                 var pickuppoint = cartInfo.GetXmlProperty("genxml/extrainfo/genxml/hidden/pickuppointaddr");
-                //var pickupary = pickuppoint.Split(',');
-                soapxml = soapxml.Replace("{unit}", Utils.StripAccents(pickuppoint));
+                var pickupary = pickuppoint.Split(',');
+                var pickuppoint1 = "";
+                var pickuppoint2 = "";
+
+                if (pickupary.Count() >= 2)
+                {
+                    pickuppoint1 = pickupary[0] + "," + pickupary[1];
+                    var lp1 = 0;
+                    foreach (var p in pickupary)
+                    {
+                        if (lp1 > 1)
+                        {
+                            pickuppoint2 += p + ",";
+                        }
+                        lp1 += 1;
+                    }
+                    pickuppoint2 = pickuppoint2.TrimEnd(',');
+                }
+                else
+                    pickuppoint1 = pickuppoint;
+
+                soapxml = soapxml.Replace("{unit}", Utils.StripAccents(pickuppoint1));
+                soapxml = soapxml.Replace("{street}", Utils.StripAccents(pickuppoint2));
+
+                
                 soapxml = soapxml.Replace("{country}", cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country"));
                 soapxml = soapxml.Replace("{countrytext}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")));
                 if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/email"))) cartInfo.SetXmlProperty("genxml/billaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
                 soapxml = soapxml.Replace("{postalcode}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/postalcode")));
 
+                soapxml = soapxml.Replace("{firstname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname")));
+                soapxml = soapxml.Replace("{lastname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/lastname")));
+                soapxml = soapxml.Replace("{telephone}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/telephone")));
+                
 
             }
             else
@@ -148,10 +175,11 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
                 switch (defData.shipoption)
                 {
                     case "1":
-                        soapxml = soapxml.Replace("{countrytext}",Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")));
+                        soapxml = soapxml.Replace("{countrytext}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")));
                         if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/email")))
-                            cartInfo.SetXmlProperty("genxml/billaddress/genxml/textbox/email",
-                                cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
+                            cartInfo.SetXmlProperty("genxml/billaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
+                        soapxml = soapxml.Replace("{recfirstname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname")));
+                        soapxml = soapxml.Replace("{reclastname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/lastname")));
                         foreach (var s in cartInfo.ToDictionary("genxml/billaddress/"))
                         {
                             soapxml = soapxml.Replace("{" + s.Key + "}", Utils.StripAccents(s.Value));
@@ -161,14 +189,17 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
                         soapxml = soapxml.Replace("{countrytext}",
                             cartInfo.GetXmlProperty("genxml/shipaddress/genxml/dropdownlist/country/@selectedtext"));
                         if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/shipaddress/genxml/textbox/email")))
-                            cartInfo.SetXmlProperty("genxml/shipaddress/genxml/textbox/email",
-                                cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
+                            cartInfo.SetXmlProperty("genxml/shipaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
+                        soapxml = soapxml.Replace("{recfirstname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/shipaddress/genxml/textbox/firstname")));
+                        soapxml = soapxml.Replace("{reclastname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/shipaddress/genxml/textbox/lastname")));
                         foreach (var s in cartInfo.ToDictionary("genxml/shipaddress/"))
                         {
                             soapxml = soapxml.Replace("{" + s.Key + "}", Utils.StripAccents(s.Value));
                         }
                         break;
                     default:
+                        soapxml = soapxml.Replace("{recfirstname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname")));
+                        soapxml = soapxml.Replace("{reclastname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/lastname")));
                         foreach (var s in cartInfo.ToDictionary("genxml/billaddress/"))
                         {
                             soapxml = soapxml.Replace("{" + s.Key + "}", "");
