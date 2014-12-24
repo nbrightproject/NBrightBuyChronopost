@@ -198,4 +198,7 @@
   <data name="validcountrycodes.Text" xml:space="preserve">
     <value>VALID Country Codes (CSV)</value>
   </data>
+  <data name="errorinaddress.Text" xml:space="preserve">
+    <value>&lt;div style="color:red;"&gt;Unable to verify address, please check you have entered your shipping address correctly.&lt;/div&gt;</value>
+  </data>
 </root>

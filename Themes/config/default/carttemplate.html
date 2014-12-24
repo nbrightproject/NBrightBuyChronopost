@@ -10,7 +10,10 @@
 	[<tag type="htmlof" resourcekey="Chronopost.Description" />]
   </div>
   <div class="formrow">
-	[<tag type="valueof" xpath="genxml/chronopostmessage" />]
+	[<tag type="if" xpath="genxml/chronopostmessage" testvalue="" display="{OFF}" />]
+      [<tag type="htmlof" resourcekey="Chronopost.errorinaddress" />]
+    [<tag type="endif" />]
+
   </div>
 </div>
 
