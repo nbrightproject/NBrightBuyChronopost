@@ -30,9 +30,18 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             if (info == null) return cartInfo;
 
             var defData = GetDefaultvalues(info, cartInfo);
+            var auditxml = "";
 
-            if (defData.regioncode == "" || (defData.freeshippinglimit > 0 && (defData.freeshippinglimit <= defData.totalcost) || defData.totalweight == 0) || (defData.productcode == "86" && info.GetXmlPropertyBool("genxml/checkbox/offerpickupfree")))
+
+            if ((defData.freeshippinglimit > 0 && (defData.freeshippinglimit <= defData.totalcost) || defData.totalweight == 0) || (defData.productcode == "86" && info.GetXmlPropertyBool("genxml/checkbox/offerpickupfree")))
             {
+                if (info.GetXmlPropertyBool("genxml/checkbox/chronopostaudit"))
+                {
+                    auditxml = "<chronopostaudit>return=ZERO,freeshippinglimit=" + defData.freeshippinglimit + ",totalcost=" + defData.totalcost + ",totalweight=" + defData.totalweight + ",productcode=" + defData.productcode + "</chronopostaudit>";
+                    cartInfo.RemoveXmlNode("genxml/chronopostaudit");
+                    cartInfo.AddXmlNode(auditxml, "chronopostaudit", "genxml");                    
+                }
+
                 // return zero if we have invalid data
                 cartInfo.SetXmlPropertyDouble("genxml/shippingcost", "0");
                 cartInfo.SetXmlPropertyDouble("genxml/shippingcostTVA", "0");
@@ -56,6 +65,13 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             soapxml = soapxml.Replace("{type}", defData.chronoposttype);
 
             var nbi = GetSoapReturn(soapxml, "https://www.chronopost.fr/quickcost-cxf/QuickcostServiceWS");
+
+            if (info.GetXmlPropertyBool("genxml/checkbox/chronopostaudit"))
+            {
+                auditxml = "<chronopostaudit>" + soapxml + nbi.XMLData + "</chronopostaudit>";
+                cartInfo.RemoveXmlNode("genxml/chronopostaudit");
+                cartInfo.AddXmlNode(auditxml, "chronopostaudit", "genxml");
+            }
 
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(nbi.XMLData);
@@ -501,7 +517,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
 
             rtnData.totalweight = cartInfo.GetXmlPropertyDouble("genxml/totalweight");
 
-            rtnData.totalcost = cartInfo.GetXmlPropertyDouble("genxml/total");
+            rtnData.totalcost = cartInfo.GetXmlPropertyDouble("genxml/subtotalcost");
 
             return rtnData;
         }

@@ -201,4 +201,7 @@
   <data name="errorinaddress.Text" xml:space="preserve">
     <value>&lt;div style="color:red;"&gt;Unable to verify address, please check you have entered your shipping address correctly.&lt;/div&gt;</value>
   </data>
+  <data name="chronopostaudit.Text" xml:space="preserve">
+    <value>Audit</value>
+  </data>
 </root>
