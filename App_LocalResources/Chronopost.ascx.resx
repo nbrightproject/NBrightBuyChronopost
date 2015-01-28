@@ -199,7 +199,12 @@
     <value>VALID Country Codes (CSV)</value>
   </data>
   <data name="errorinaddress.Text" xml:space="preserve">
-    <value>&lt;div style="color:red;"&gt;Unable to verify address, please check you have entered your shipping address correctly.&lt;/div&gt;</value>
+    <value>&lt;div style="color:red;"&gt;Unable to verify address, please check you have entered your shipping address correctly.&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+$('input[id*="_cmdOrder_"]').hide();
+});
+&lt;/script&gt;</value>
   </data>
   <data name="chronopostaudit.Text" xml:space="preserve">
     <value>Audit</value>

@@ -199,6 +199,12 @@
     <value>Codes pays acceptés (CSV)</value>
   </data>
   <data name="errorinaddress.Text" xml:space="preserve">
-    <value>&lt;div style="color:red;"&gt;Nous n'avons pas été en mesure de vérifier l'adresse, veuillez vérifier que vous avez saisi votre adresse d'expédition correctement.&lt;/div&gt;</value>
+    <value>&lt;div style="color:red;"&gt;Nous n'avons pas été en mesure de vérifier l'adresse, veuillez vérifier que vous avez saisi votre adresse d'expédition correctement.&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+$('input[id*="_cmdOrder_"]').hide();
+});
+&lt;/script&gt;
+</value>
   </data>
 </root>
