@@ -178,6 +178,7 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
                 soapxml = soapxml.Replace("{country}", cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country"));
                 soapxml = soapxml.Replace("{countrytext}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")));
                 if (!Utils.IsEmail(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/email"))) cartInfo.SetXmlProperty("genxml/billaddress/genxml/textbox/email", cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"));
+                soapxml = soapxml.Replace("{email}", cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/email"));
                 soapxml = soapxml.Replace("{postalcode}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/postalcode")));
 
                 soapxml = soapxml.Replace("{firstname}", Utils.StripAccents(cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname")));
