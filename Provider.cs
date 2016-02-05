@@ -141,6 +141,16 @@ namespace Nevoweb.DNN.NBrightBuyChronopost
             soapxml = soapxml.Replace("{shipperCountry}", Utils.StripAccents(defData.distributioncountrycode));
             soapxml = soapxml.Replace("{shipperCountryName}", Utils.StripAccents(defData.distributioncountryname));
 
+
+            // Chronopost only support 1 email address, so make sure we only take 1 from support email field.
+            var supportemails = StoreSettings.Current.SettingsInfo.GetXmlProperty("genxml/textbox/supportemail");
+            if (supportemails.Contains(','))
+            {
+                supportemails = supportemails.Split(',')[0].Trim();
+            }
+            soapxml = soapxml.Replace("{supportemail}", Utils.StripAccents(supportemails));
+
+
             foreach (var s in StoreSettings.Current.Settings())
             {
                 soapxml = soapxml.Replace("{" + s.Key + "}", s.Value);                
